@@ -1,4 +1,4 @@
-import com.opencsv.CSVReader;
+import com.opencsv.*;
 import com.opencsv.exceptions.CsvValidationException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,17 +15,27 @@ import java.util.Objects;
  */
 public class SongManager implements SongManagerInterface {
 
-    private Song[][] songData; // the main Song array from data in "spotify-2023.csv"
+    /**
+     * the main Song array from data in "spotify-2023.csv"
+     */
+    private Song[][] songData;
 
-    private String[] releaseYears; // the Release year array created from "count-by-release-year.csv"
+    /**
+     * the Release year array created from "count-by-release-year.csv"
+     */
+    private String[] releaseYears;
 
-    private String[] countSong; // the count from each release year found in "count-by-release-year.csv"
+    /**
+     * the count from each release year found in "count-by-release-year.csv"
+     */
+    private String[] countSong;
 
     /**
      * this is the main constructor that reads in files, creates arrays, fills arrays with data from files, and
      * sorts the songData array by track name
      */
     public SongManager() {
+
         // Specify the path to your CSV files
         String csvFile1 = "src/count-by-release-year.csv";
         String csvFile2 = "src/spotify-2023.csv";
@@ -47,31 +57,31 @@ public class SongManager implements SongManagerInterface {
             csvReader1.readNext(); // Skip the first line of "count-by-release-year.csv"
 
             // initialize arrays
-            this.releaseYears = new String[50];
-            this.countSong = new String[50];
+            releaseYears = new String[50];
+            countSong = new String[50];
 
             // fill releaseYears and countSong arrays with data  
             while ((nextLine = csvReader1.readNext()) != null) {
+
                 // Process the data as needed
                 if (nextLine.length > 0 && nextLine[0].matches("\\d{4}")) {
-                    this.releaseYears[idx_year] = nextLine[0];
+                    releaseYears[idx_year] = nextLine[0];
                     idx_year++;
                 }
                 if (nextLine.length > 0 && nextLine[1].matches("-?\\d+")) {
-                    this.countSong[idx_count] = nextLine[1];
+                    countSong[idx_count] = nextLine[1];
                     idx_count++;
-
                 }
             }
 
             csvReader2.readNext(); // ignore first line of spotify-2023.csv file
 
             // initialize songData array with empty columns 
-            this.songData = new Song[50][];
+            songData = new Song[50][];
 
             // fill each column with set lengths taken from countSong array  
-            for (int songIdx = 0; songIdx < this.songData.length; songIdx++) {
-                this.songData[songIdx] = new Song[Integer.parseInt(this.countSong[songIdx])];
+            for (int songIdx = 0; songIdx < songData.length; songIdx++) {
+                songData[songIdx] = new Song[Integer.parseInt(countSong[songIdx])];
             }
 
             // fill songData wil song data captured from "spotify-2023.csv"
@@ -81,18 +91,18 @@ public class SongManager implements SongManagerInterface {
                 Song cur_song = getSong(nextLine);
 
                 // add current record to songData replacing the first null
-                for (int i = 0; i < this.songData.length; i++) {
-                    for (int j = 0; j < this.songData[i].length; j++) {
-                        if (Objects.equals(cur_song.releasedYear(), this.releaseYears[i]) && this.songData[i][j] == null) {
-                            this.songData[i][j] = cur_song;
-                            j = this.songData[i].length;
+                for (int i = 0; i < songData.length; i++) {
+                    for (int j = 0; j < songData[i].length; j++) {
+                        if (Objects.equals(cur_song.releasedYear(), releaseYears[i]) && songData[i][j] == null) {
+                            songData[i][j] = cur_song;
+                            j = songData[i].length;
                         }
                     }
                 }
             }
 
             // sort the songData array
-            for (Song[] row : this.songData) {
+            for (Song[] row : songData) {
                 if (row.length > 1) {
                     Arrays.sort(row);
                 }
@@ -163,8 +173,13 @@ public class SongManager implements SongManagerInterface {
      * @param yearIndex index of the desired release year
      * @return release year
      */
-    public String getYearName(int yearIndex) {
-        return releaseYears[yearIndex];
+    public String getYearName(int yearIndex) throws NullPointerException {
+        try {
+            return releaseYears[yearIndex];
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     /**

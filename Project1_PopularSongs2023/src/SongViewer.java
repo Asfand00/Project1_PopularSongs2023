@@ -15,14 +15,21 @@ import java.util.Objects;
  */
 public class SongViewer extends JFrame {
 
-    private int curSongIdx = 0; // current song index
+    /**
+     * current song index
+     */
+    private int curSongIdx = 0;
 
-    private int songCounter = 1; // current song in year (used in songInfo JLabel)
+    /**
+     * current song in year (used in songInfo JLabel)
+     */
+    private int songCounter = 1;
 
     /**
      * This is the main constructor for SongViewer GUI, creates new JFrame
      */
     public SongViewer() {
+
         // set size for frame
         setSize(400, 350);
 

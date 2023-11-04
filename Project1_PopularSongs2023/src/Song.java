@@ -1,7 +1,7 @@
+
 /**
  * This Record takes in song data from "spotify-2023.csv" file and creates a
  * Song Record with the following attributes below
- *
  * @param trackName                     the track name
  * @param artistsName                   the artists name
  * @param releasedYear                  the released year
@@ -11,20 +11,39 @@
  * @author Asfandyar Tanwer
  * @version 1.0
  */
-public record Song(
-        String trackName, /* The name of the song. */
+public record Song (
 
-        String artistsName,  /* artist(s) name of song. */
+        /**
+         * The name of the song.
+         */
+        String trackName,
 
-        String releasedYear, /* release year of song. */
+        /**
+         * artist(s) name of song.
+         */
+        String artistsName,
 
-        String releasedMonth, /*  release month of song */
+        /**
+         * release year of song.
+         */
+        String releasedYear,
 
-        String releasedDay, /* release day of song */
+        /**
+         * release month of song
+         */
+        String releasedMonth,
 
-        String totalNumberOfStreamsOnSpotify /* total streams on spotify of song */
+        /**
+         * release day of song
+         */
+        String releasedDay,
 
-) implements Comparable<Song> {
+        /**
+         * total streams on spotify of song
+         */
+        String totalNumberOfStreamsOnSpotify
+)
+        implements Comparable<Song> {
 
     /**
      * This is the constructor for the Song Record its main feature is to test

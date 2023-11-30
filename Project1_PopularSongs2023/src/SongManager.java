@@ -37,8 +37,8 @@ public class SongManager implements SongManagerInterface {
     public SongManager() {
 
         // Specify the path to your CSV files
-        String csvFile1 = "src/count-by-release-year.csv";
-        String csvFile2 = "src/spotify-2023.csv";
+        String csvFile1 = "Project1_PopularSongs2023/src/count-by-release-year.csv";
+        String csvFile2 = "Project1_PopularSongs2023/src/spotify-2023.csv";
 
         try {
             // Create a FileReader object to read the CSV files

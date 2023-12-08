@@ -33,6 +33,9 @@ public class SongViewer extends JFrame {
         // set size for frame
         setSize(400, 350);
 
+        // set title for frame 
+        setTitle("Popular Songs of 2023");
+
         // add new song manager
         SongManager songManager = new SongManager();
 

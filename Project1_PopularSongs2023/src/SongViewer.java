@@ -153,8 +153,9 @@ public class SongViewer extends JFrame {
                     curSongIdx = 0;
                 }
 
-                // display current song info in label
+                // display current song info in label and title
                 songInfo.setText("Song " + songCounter + " of " + songCountYear + " | " + songCountYear + " out of " + songManager.getSongCount() + " songs");
+                setTitle("Songs | " + songCounter + " of " + songCountYear + " Songs");
             }
         });
 
@@ -181,8 +182,9 @@ public class SongViewer extends JFrame {
                     songCounter = 1;
                 }
 
-                // display current song info
+                // display current song info in label and title
                 songInfo.setText("Song " + songCounter + " of " + songCountYear + " | " + songCountYear + " out of " + songManager.getSongCount() + " songs");
+                setTitle("Songs | " + songCounter + " of " + songCountYear + " Songs");
 
                 // display current song in text fields
                 track.setText(songArr[curSongIdx].trackName());
@@ -215,8 +217,9 @@ public class SongViewer extends JFrame {
                     songCounter = songCountYear;
                 }
 
-                // display current song info
+                // display current song info in label and title
                 songInfo.setText("Song " + songCounter + " of " + songCountYear + " | " + songCountYear + " out of " + songManager.getSongCount() + " songs");
+                setTitle("Songs | " + songCounter + " of " + songCountYear + " Songs");
 
                 // display current song in text fields
                 track.setText(songArr[curSongIdx].trackName());

@@ -1,4 +1,14 @@
 # Project1_PopularSongs2023
+
+## Song Manager App Instructions
+- Download files
+- Open main file in desired IDE (preferrably IntelliJ for easy access)
+- Run main file   
+
+
+
+
+## IGNORE BELOW, NOTES FOR ME
 Some methods in SongManagerInferface are not used, generates warnings. 
 
 Update: in terminal run javac -Xdoclint:all -cp "src;lib/*" src/filename.java. (will correct most of the errors)  

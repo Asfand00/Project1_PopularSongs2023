@@ -1,9 +1,9 @@
 # Project1_PopularSongs2023
 
 ## Song Manager App Instructions
-- Download files
+- Download or clone Project1 folder 
 - Open main file in desired IDE (preferrably IntelliJ for easy access)
-- Run main file   
+- Run Main.Java file under src to start song viewer app   
 
 
 
